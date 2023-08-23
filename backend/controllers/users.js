@@ -112,5 +112,5 @@ const getAllUsers= (req, res) => {
 
 
 module.exports = {
-  register, login,getAllUsers
+  register,login,getAllUsers
 }
