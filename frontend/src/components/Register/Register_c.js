@@ -10,8 +10,8 @@ const RegistrationForm = () => {
   const [age, setAge] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const [role, setRole] = useState("64e4f00a4eafc1ed54ea4b38")
-const {setRegister,register}=useContext(AppContext)
+ // const [role, ] = useState("64e4f00a4eafc1ed54ea4b38")
+const {setRegister,register,setRole,role}=useContext(AppContext)
 
 
   
@@ -65,7 +65,7 @@ const {setRegister,register}=useContext(AppContext)
           required
         />
         <select onChange={(e)=>{
-           console.log(e.target.value);
+           console.log(role);
             setRole(e.target.value)
         }}>
           <option value="64e4f00a4eafc1ed54ea4b38">User</option>

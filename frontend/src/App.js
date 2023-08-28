@@ -11,6 +11,7 @@ import RegistrationComponent from "./components/Register/Register_c";
 import Navbar from "./components/welcomePage/nav";
 import WelcomeSection from "./components/welcomePage/welcome";
 import Home from "./components/home";
+import Addgym from "./components/addGym/addgym";
 export const AppContext = createContext();
 
 function App() {
@@ -19,12 +20,13 @@ function App() {
   const [register ,setRegister ]=useState("")
   const [login ,setLogin ]=useState("")
   const [userName ,setUserName ]=useState("")
-  
+  const [role2, setRole2] = useState("64e4f00a4eafc1ed54ea4b38")
+  const [role, setRole] = useState("64e4f00a4eafc1ed54ea4b38")
 
  
   return (
     <div className="login_page">
-          <><AppContext.Provider value={{setIsLoggedIn,IsLoggedIn,setRegister,register,login,setLogin,setToken,token,setUserName,userName}}>
+          <><AppContext.Provider value={{setIsLoggedIn,IsLoggedIn,setRegister,register,login,setLogin,setToken,token,setUserName,userName,role2, setRole2,role, setRole}}>
    
  
    <Navbar />
@@ -34,6 +36,7 @@ function App() {
    <Route path="/register" element={<RegistrationComponent/>} />
    <Route path="/login" element={<Login/>} />
    <Route path="/" element={<Gympost/>} />
+   <Route path="/addGym" element={<Addgym/>} />
    
   
    

@@ -4,7 +4,7 @@ import "./style.css"
 import axios from 'axios';
 import { AppContext } from "../../App"
 const Login = () => {
-    const { setLogin, login, setIsLoggedIn, setUserName } = useContext(AppContext)
+    const { setLogin, login, setIsLoggedIn, setUserName,setRole2 } = useContext(AppContext)
     const navigate = useNavigate()
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -24,7 +24,7 @@ const Login = () => {
                 setIsLoggedIn(true)
                 console.log(token);
                 console.log(role);
-                setLogin()
+                setRole2(role.role)
 
             }
 
