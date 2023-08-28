@@ -99,7 +99,7 @@ const createNewGymPost = (req, res) => {
             success: true,
             message: `All GymPost`,
            // userId: userId,
-            gym: gym,
+            gym: gym
           });
         } else {
           res.status(200).json({

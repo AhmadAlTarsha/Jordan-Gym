@@ -5,10 +5,10 @@ const { createNewGymPost,updateGymInfoById ,deleteGymById,getAllGym} = require("
 const gymPostRouter = express.Router();
 const authentication = require("../middleware/authentication");
 const authorization = require("../middleware/authorization");
-gymPostRouter.post("/create",authentication,authorization("Add_gym"),createNewGymPost)
-gymPostRouter.put("/update/:id",authentication,authorization("Add_gym"),updateGymInfoById)
-gymPostRouter.delete("/delete/:id",authentication,authorization("Add_gym"),deleteGymById)
-gymPostRouter.get("/posts",getAllGym)
+gymPostRouter.post("/create",authentication,authorization("Add_Gym"),createNewGymPost)
+gymPostRouter.put("/update/:id",authentication,authorization("Add_Gym"),updateGymInfoById)
+gymPostRouter.delete("/delete/:id",authentication,authorization("Add_Gym"),deleteGymById)
+gymPostRouter.get("/posts",authentication,getAllGym)
 
 
 module.exports = gymPostRouter;

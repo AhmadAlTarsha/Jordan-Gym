@@ -12,6 +12,6 @@ const usersRouter = express.Router();
 
 usersRouter.post("/register", register);
 usersRouter.post("/login",login);
-usersRouter.get("/users",getAllUsers);
+usersRouter.get("/all",getAllUsers);
 
 module.exports = usersRouter;

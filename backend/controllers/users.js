@@ -13,7 +13,7 @@ const register = (req, res) => {
     age,
     email,
     password,
-    role,
+    role //:"64e4f00a4eafc1ed54ea4b38",  //user role
   });
 
   user
@@ -75,6 +75,8 @@ const login = (req, res) => {
           success: true,
           message: `Valid login credentials`,
           token: token,
+          role: result.role,
+       
         });
       } catch (error) {
         throw new Error(error.message);
