@@ -11,7 +11,7 @@ import RegistrationComponent from "./components/Register/Register_c";
 import Navbar from "./components/welcomePage/nav";
 import WelcomeSection from "./components/welcomePage/welcome";
 import Home from "./components/home";
-import Addgym from "./components/addGym/addgym";
+import AddGym from "./components/add/AddGym";
 export const AppContext = createContext();
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
   const [register ,setRegister ]=useState("")
   const [login ,setLogin ]=useState("")
   const [userName ,setUserName ]=useState("")
-  const [role2, setRole2] = useState("64e4f00a4eafc1ed54ea4b38")
+  const [role2, setRole2] = useState("")
   const [role, setRole] = useState("64e4f00a4eafc1ed54ea4b38")
 
  
@@ -36,7 +36,7 @@ function App() {
    <Route path="/register" element={<RegistrationComponent/>} />
    <Route path="/login" element={<Login/>} />
    <Route path="/" element={<Gympost/>} />
-   <Route path="/addGym" element={<Addgym/>} />
+   <Route path="/addGym" element={<AddGym/>} />
    
   
    

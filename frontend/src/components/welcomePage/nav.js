@@ -7,7 +7,7 @@ import { AppContext } from "../../App"
 const Navbar = () => {
   const navigate=useNavigate()
   const { role2} = useContext(AppContext)
-  console.log(role2);
+  console.log("from nav:",role2);
   return (
     <nav className="navbar">
       <div className="container">

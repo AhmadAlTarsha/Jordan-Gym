@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
 
 const gymInfo = new mongoose.Schema({
-    gymOwner: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+    gymOwner: { type:String },
     name: { type: String, required: true },
     location: { type: String },
     image: {type:String},
     nameOfTriner: [{ type: String }],
-    mempershipPrice: [{ type: Array, "default": [] }],
+    mempershipPrice: [{ type: String }],
     facilities: [{ type: String }]
 
 

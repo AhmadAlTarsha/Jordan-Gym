@@ -21,6 +21,7 @@ const Gympost = () => {
        console.log(gympost);
 
     }).catch((err) => {
+     
       console.log(err);
     })
 

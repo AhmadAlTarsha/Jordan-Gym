@@ -2,14 +2,14 @@ import React, { useState,useEffect ,useContext  } from "react";
 import axios from 'axios';
 import { Routes, Route, Link, useParams, useNavigate } from "react-router-dom";
 import { AppContext } from "../../App"
-const Addgym = () => {
+const AddGym = () => {
 const navigate=useNavigate()
-    const [gymOwner, setgymOwner] = useState("")
-    const [name, setname] = useState("")
+    const [gymOwner, setGymOwner] = useState("")
+    const [name, setName] = useState("")
     const [location, setlocation] = useState("")
-    const [nameOfTriner, setnameOfTriner] = useState("")
-    const [mempershipPrice, setmempershipPrice] = useState("")
-    const [facilities, setfacilities] = useState("")
+    const [nameOfTriner, setnameOfTriner] = useState([])
+    const [mempershipPrice, setmempershipPrice] = useState([])
+    const [facilities, setfacilities] = useState([])
     const {token}=useContext(AppContext)
   return (
     <div> <input
@@ -17,7 +17,7 @@ const navigate=useNavigate()
     name="gymOwner"
     placeholder="gymOwner "
     onChange={(e) => {
-      setgymOwner(e.target.value)
+      setGymOwner(e.target.value)
     }}
     required
   />
@@ -26,7 +26,7 @@ const navigate=useNavigate()
     name="name"
     placeholder="name"
     onChange={(e) => {
-      setname(e.target.value)
+      setName(e.target.value)
     }}
     required
   />
@@ -65,6 +65,7 @@ const navigate=useNavigate()
     }}
     required></input>
         <button onClick={()=>{
+          // console.log(role);
     const newgym=  {gymOwner,name,location,nameOfTriner,mempershipPrice,facilities}
     console.log(newgym);
         axios.post("http://localhost:5000/gym/create",newgym,{
@@ -72,7 +73,7 @@ const navigate=useNavigate()
               Authorization: `Bearer ${token}`,
             },
           }).then((res)=>{
-            console.log(ers);
+            console.log(res);
         }).catch((err)=>{
             console.log(err);
         })
@@ -81,4 +82,4 @@ const navigate=useNavigate()
   )
 }
 
-export default Addgym
+export default AddGym

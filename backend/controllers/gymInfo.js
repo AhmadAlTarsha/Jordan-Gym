@@ -1,8 +1,9 @@
 const gymPostModel = require("../models/gymInfo");
 
 const createNewGymPost = (req, res) => {
+const userId=req.userId
     const { gymOwner, name, location,nameOfTriner,mempershipPrice,facilities} = req.body;
-    const newGymPost = new gymPostModel({ gymOwner, name, location,nameOfTriner,mempershipPrice,facilities });
+    const newGymPost = new gymPostModel({ userId,gymOwner, name, location,nameOfTriner,mempershipPrice,facilities });
     newGymPost
       .save()
       .then((result) => {
@@ -91,7 +92,7 @@ const createNewGymPost = (req, res) => {
   //  const userId = req.token.userId;
     gymPostModel
       .find()
-       .populate("gymOwner","firstName -_id")
+       
       .exec()
       .then((gym) => {
         if (gym.length) {
