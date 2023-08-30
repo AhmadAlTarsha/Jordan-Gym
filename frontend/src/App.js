@@ -16,17 +16,21 @@ export const AppContext = createContext();
 
 function App() {
   const [token,setToken]=useState(localStorage.getItem("token"))
+  const [userId,setUserId]=useState(localStorage.getItem("userId"))
+  const [user_role,setUserRole]=useState(localStorage.getItem("userRole"))
+  const[loggedIn,setLoggedIn]=useState(localStorage.getItem("loggedIn"))
   const [IsLoggedIn ,setIsLoggedIn ]=useState(false)
   const [register ,setRegister ]=useState("")
   const [login ,setLogin ]=useState("")
   const [userName ,setUserName ]=useState("")
   const [role2, setRole2] = useState("")
   const [role, setRole] = useState("64e4f00a4eafc1ed54ea4b38")
-
+ 
+  const [gymOwner, setGymOwner] = useState("")
  
   return (
     <div className="login_page">
-          <><AppContext.Provider value={{setIsLoggedIn,IsLoggedIn,setRegister,register,login,setLogin,setToken,token,setUserName,userName,role2, setRole2,role, setRole}}>
+          <><AppContext.Provider value={{loggedIn,setLoggedIn,setUserRole,user_role,setIsLoggedIn,IsLoggedIn,setRegister,register,login,setLogin,setToken,token,setUserName,userName,role2, setRole2,role, setRole,setUserId,userId,gymOwner, setGymOwner}}>
    
  
    <Navbar />
@@ -35,7 +39,7 @@ function App() {
    
    <Route path="/register" element={<RegistrationComponent/>} />
    <Route path="/login" element={<Login/>} />
-   <Route path="/" element={<Gympost/>} />
+   <Route path="/gympost" element={<Gympost/>} />
    <Route path="/addGym" element={<AddGym/>} />
    
   

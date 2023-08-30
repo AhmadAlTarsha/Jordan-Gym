@@ -23,7 +23,9 @@ const register = (req, res) => {
         success: true,
         message: `Account Created Successfully`,
         user: result,
+        
       });
+      console.log(result);
     })
     .catch((err) => {
       if (err.keyPattern) {
@@ -68,7 +70,7 @@ const login = (req, res) => {
         };
 
         const options = {
-          expiresIn: "60m",
+          expiresIn: "120m",
         };
         const token = jwt.sign(payload, process.env.SECRET, options);
         res.status(200).json({
@@ -78,6 +80,7 @@ const login = (req, res) => {
           role: result.role,
        userId:result._id
         });
+        console.log(token);
       } catch (error) {
         throw new Error(error.message);
       }

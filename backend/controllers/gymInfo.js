@@ -3,7 +3,7 @@ const gymPostModel = require("../models/gymInfo");
 const createNewGymPost = (req, res) => {
 const userId=req.userId
     const { gymOwner, name, location,nameOfTriner,mempershipPrice,facilities} = req.body;
-    const newGymPost = new gymPostModel({ userId,gymOwner, name, location,nameOfTriner,mempershipPrice,facilities });
+    const newGymPost = new gymPostModel({gymOwner, name, location,nameOfTriner,mempershipPrice,facilities });
     newGymPost
       .save()
       .then((result) => {
@@ -91,7 +91,7 @@ const userId=req.userId
   const getAllGym = (req, res) => {
   //  const userId = req.token.userId;
     gymPostModel
-      .find()
+      .find().populate("gymOwner", "firstName -_id")
        
       .exec()
       .then((gym) => {
@@ -117,4 +117,30 @@ const userId=req.userId
         });
       });
   };
-  module.exports={createNewGymPost,updateGymInfoById,deleteGymById,getAllGym}
+  const getArticlesByOwner = (req, res) => {
+    let gymowner= req.params.id;
+  console.log(gymowner);
+    gymPostModel
+      .find({ gymOwner: gymowner })
+      .then((articles) => {
+        if (!articles.length) {
+          return res.status(404).json({
+            success: false,
+            message: `The author:  has no articles`,
+          });
+        }
+        res.status(200).json({
+          success: true,
+          message: `All the articles for the author: `,
+          articles: articles,
+        });
+      })
+      .catch((err) => {
+        res.status(500).json({
+          success: false,
+          message: `Server Error`,
+          err: err.message,
+        });
+      });
+  };
+  module.exports={createNewGymPost,updateGymInfoById,deleteGymById,getAllGym,getArticlesByOwner}

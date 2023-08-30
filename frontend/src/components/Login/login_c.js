@@ -4,11 +4,11 @@ import "./style.css"
 import axios from 'axios';
 import { AppContext } from "../../App"
 const Login = () => {
-    const { setLogin, login, setIsLoggedIn, setUserName,setRole2 } = useContext(AppContext)
+    const {loggedIn,setLoggedIn,setLogin,login, setIsLoggedIn, setUserName, setRole2, userId, setUserId, setGymOwner, gymOwner, setUserRole, user_role } = useContext(AppContext)
     const navigate = useNavigate()
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const[userId,setUserId]=useState("")
+
 
     const handleLogin = () => {
         const user = { email, password }
@@ -20,22 +20,35 @@ const Login = () => {
             if (res.data.success) {
 
                 const token = res.data.token
-                const role = res.data.role
-                localStorage.setItem("token", token)
+                const role = res.data.role.role
+                const user_id = res.data.userId
                 setIsLoggedIn(true)
-                console.log(token);
-                console.log(role);
-                setRole2(role.role)
+                setGymOwner(user_id)
+                setUserRole(role)
+                localStorage.setItem("token", token)
+                localStorage.setItem("userId", user_id)
+                localStorage.setItem("userRole", user_role)
+                setLoggedIn(true)
+                localStorage.setItem("loggedIn",true)
 
+                console.log(role);
+
+                console.log(gymOwner);
+                // console.log(token);
+                //  console.log(role.role);
+                console.log(user_id);
+                setRole2(role.role)
+                setUserId(user_id)
+                // console.log(userId);
             }
 
-            navigate("/gymPost")
+
 
         }).catch((error) => {
 
 
-            console.log(error.response.data.message);
-setLogin(error.response.data.message)
+            console.log(error);
+            setLogin(error.response.data.message)
         })
     };
 

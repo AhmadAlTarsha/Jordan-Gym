@@ -4,23 +4,15 @@ import { Routes, Route, Link, useParams, useNavigate } from "react-router-dom";
 import { AppContext } from "../../App"
 const AddGym = () => {
 const navigate=useNavigate()
-    const [gymOwner, setGymOwner] = useState("")
+ 
     const [name, setName] = useState("")
     const [location, setlocation] = useState("")
     const [nameOfTriner, setnameOfTriner] = useState([])
     const [mempershipPrice, setmempershipPrice] = useState([])
     const [facilities, setfacilities] = useState([])
-    const {token}=useContext(AppContext)
+    const {token,userId,gymOwner}=useContext(AppContext)
   return (
-    <div> <input
-    type="text"
-    name="gymOwner"
-    placeholder="gymOwner "
-    onChange={(e) => {
-      setGymOwner(e.target.value)
-    }}
-    required
-  />
+    <div> 
   <input
     type="text"
     name="name"
@@ -65,14 +57,18 @@ const navigate=useNavigate()
     }}
     required></input>
         <button onClick={()=>{
-          // console.log(role);
-    const newgym=  {gymOwner,name,location,nameOfTriner,mempershipPrice,facilities}
+          console.log(token);
+        
+          console.log(userId);
+          console.log(gymOwner);
+    const newgym=  {gymOwner:userId,name,location,nameOfTriner,mempershipPrice,facilities}
     console.log(newgym);
-        axios.post("http://localhost:5000/gym/create",newgym,{
+        axios.post(`http://localhost:5000/gym/create`,newgym,{
             headers: {
               Authorization: `Bearer ${token}`,
             },
           }).then((res)=>{
+
             console.log(res);
         }).catch((err)=>{
             console.log(err);
