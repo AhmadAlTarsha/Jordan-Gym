@@ -122,17 +122,17 @@ const userId=req.userId
   console.log(gymowner);
     gymPostModel
       .find({ gymOwner: gymowner })
-      .then((articles) => {
-        if (!articles.length) {
+      .then((gym) => {
+        if (!gym.length) {
           return res.status(404).json({
             success: false,
-            message: `The author:  has no articles`,
+           
           });
         }
         res.status(200).json({
           success: true,
-          message: `All the articles for the author: `,
-          articles: articles,
+          
+          gym: gym,
         });
       })
       .catch((err) => {

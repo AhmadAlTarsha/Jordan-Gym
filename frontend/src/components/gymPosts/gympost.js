@@ -19,7 +19,7 @@ const Gympost = () => {
        console.log(response.data.gym);
        setGymPost(response.data.gym)
        console.log(gympost);
-       console.log(gympost[0].gymOwner.firstName);
+  
 
     }).catch((err) => {
      

@@ -1,17 +1,15 @@
 import React, { useState,useContext } from 'react';
-import './style.css'; // Import your CSS file for styling
+import './register.css'; // Import your CSS file for styling
 import axios from 'axios'
 import { AppContext } from "../../App";
-import {useNavigate} from 'react-router-dom'
+import {useNavigate,Route,Link} from 'react-router-dom'
 const RegistrationForm = () => {
-
+const navigate=useNavigate
   const [firstName, setFirsName] = useState("")
   const [lastName, setLastName] = useState("")
   const [age, setAge] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  // const[role,setRole]=useState("")
- // const [role, ] = useState("64e4f00a4eafc1ed54ea4b38")
 const {setRegister,register,setRole,role}=useContext(AppContext)
 
 
@@ -70,7 +68,7 @@ const {setRegister,register,setRole,role}=useContext(AppContext)
             setRole(e.target.value)
          console.log(role);
         }}>
-          <option value='64e4f00a4eafc1ed54ea4b38' name="a">User</option>
+          <option value='64e4f00a4eafc1ed54ea4b38'>User</option>
           <option value='64e4efe74eafc1ed54ea4b36'  >Gym Owner</option>
         </select>
         <button onClick={() => {
@@ -82,7 +80,7 @@ axios.post("http://localhost:5000/users/register",newuser).then((res)=>{
 
 setRegister(res.data.message)
 
-//navigate("/login")
+
 
 }).catch((error)=>{
 
@@ -91,9 +89,10 @@ setRegister(res.data.message)
 })
 
     }} >Register</button>
-   
+  
       </form>
-       <p>{register}</p>
+       <p className='registerMessage'>{register}</p>
+       <p  className="loginMessage">already have an account <Link className='login_link' to="/login">login now</Link></p>
     </div>
   );
 };

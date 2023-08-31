@@ -1,5 +1,4 @@
-/* App.css */
-/* Reset some default styles */
+
 body, h1, h2, h3, p, ul, li {
     margin: 0;
     padding: 0;
@@ -15,7 +14,7 @@ body, h1, h2, h3, p, ul, li {
     padding: 0 20px;
   }
   
-  /* Navbar styles */
+
   .navbar {
     background-color: #222;
     color: #fff;
@@ -28,7 +27,7 @@ body, h1, h2, h3, p, ul, li {
   }
   
   .nav-links {
-    gap: 30px;
+    gap: 50px;
     list-style: none;
     display: flex;
   }
