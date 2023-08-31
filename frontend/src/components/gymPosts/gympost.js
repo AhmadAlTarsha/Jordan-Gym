@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import "./gympost.css"
 import { useEffect,useState,useContext } from 'react'
 import { AppContext } from '../../App';
 const Gympost = () => {
@@ -34,7 +35,7 @@ const Gympost = () => {
 
   return (
     <div>{ gympost.map((oneGym)=>{
-      return <div><h1>{oneGym.name}</h1> <p>{oneGym.location}</p>  <p>{oneGym.gymOwner.firstName}</p></div>
+      return <div className='gympost'><h1>{oneGym.name}</h1> <p>{oneGym.location}</p>  <p>{oneGym.gymOwner.firstName}</p></div>
     })}</div>
   )
 }

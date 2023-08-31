@@ -14,8 +14,8 @@ const {setRegister,register,setRole,role}=useContext(AppContext)
 
 
   
-  return (
-    <div className="registration-form">
+  return (<>
+   <div className="registration-form">
       <h2>Registration</h2>
       <form >
         <input
@@ -94,6 +94,8 @@ setRegister(res.data.message)
        <p className='registerMessage'>{register}</p>
        <p  className="loginMessage">already have an account <Link className='login_link' to="/login">login now</Link></p>
     </div>
+  </>
+   
   );
 };
 

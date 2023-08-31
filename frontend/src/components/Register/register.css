@@ -100,7 +100,7 @@
     background-color: #f39c12;
     color: white;
     cursor: pointer;
-    transition: background-color 2s ease-in-out;
+   transition: background-color 2s ease-in-out;
   }
   
   .registration-form button:hover {

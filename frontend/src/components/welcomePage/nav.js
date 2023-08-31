@@ -16,7 +16,7 @@ const Navbar = () => {
         <div className="logo">GymLogo</div>
 
          <ul className="nav-links">
-      <Link to="/login">login</Link>
+      {!loggedIn?<Link to="/login">login</Link>:null}
      {loggedIn? <Link to="/gympost">go to the gym page</Link>:null}
   {loggedIn&&user_role=="Gym_owner"? <Link to="/addGym">add my gym</Link> :null}
   {loggedIn&&user_role=="Gym_owner"? <Link to="/myGym"> my gym</Link> :null}
