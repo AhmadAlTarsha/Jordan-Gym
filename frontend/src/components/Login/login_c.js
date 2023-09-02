@@ -36,6 +36,8 @@ setLoggedIn,loginMessage,setLoginMessage,setIsLoggedIn, setUserId,setGymOwner,se
           setUserId(user_id);
           console.log(res.data);
           setLoginMessage(res.data.message)
+
+       
           navigate("/gympost")
         }
       })

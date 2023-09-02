@@ -14,13 +14,12 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="container">
         <div className="logo">GymLogo</div>
-
          <ul className="nav-links">
-      {!loggedIn?<Link to="/login">login</Link>:null}
+      {/* {!loggedIn?<Link to="/login">login</Link>:null} */}
      {loggedIn? <Link to="/gympost">go to the gym page</Link>:null}
   {loggedIn&&user_role=="Gym_owner"? <Link to="/addGym">add my gym</Link> :null}
   {loggedIn&&user_role=="Gym_owner"? <Link to="/myGym"> my gym</Link> :null}
-  {loggedIn? <Link to ="/home"
+  {loggedIn? <Link to ="/"
    onClick={() => {
       setLoggedIn(false)
       console.log(loggedIn);

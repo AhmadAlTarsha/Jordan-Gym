@@ -1,26 +1,45 @@
 const commentModel = require("../models/comment");
+const gymModel =require("../models/gymInfo")
 
 const createNewComment = (req, res) => {
-    const { comment, commenter } = req.body;
-    const newcomment = new commentModel({ comment, commenter });
+  const id=req.params.id
+//const commenter=req.token.userId
+    const { comment } = req.body;
+    const newcomment = new commentModel({ comment,  });
     newcomment
-      .save()
-      .then((result) => {
-        res.status(201).json({
-          success: true,
-          message: `comment created`,
-          comment: result,
+    .save()
+    .then((result) => {
+      gymModel
+        .findByIdAndUpdate(
+         {_id:id},
+          { $push: { comment: result._id } },
+          { new: true },
+         
+        )
+        .then(() => {
+          res.status(201).json({
+            success: true,
+            message: `ok`,
+            comment: result,
+          });
+        })
+        .catch((err) => {
+          res.status(500).json({
+            success: false,
+            message: `Server Error`,
+            err: err.message,
+          });
         });
-      })
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json({
-          
-          success: false,
-          message: `Server `,
-          err: err.message,
-        });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: `Server Error`,
+        err: err.message,
       });
+    });
+     
+      
   };
   const updateCommentById = (req, res) => {
     const id = req.params.id;

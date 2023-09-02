@@ -1,0 +1,31 @@
+.homepage-container{
+    width: 100%;
+    font-family: Arial, sans-serif;
+    background-image: url("../../image/background_image.jpg"); 
+    background-size: cover;
+    background-position: center;
+    gap: 20px;
+}
+
+.homepage{
+    width: 100%;
+    display: grid;
+    gap: 50px;
+justify-content: center;
+font-family: Arial, sans-serif;
+}
+.join{
+    font-family: Arial, sans-serif;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+.Join-Now-button{
+    font-family: Arial, sans-serif;
+    background-color: #f39c12;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+    width: 20%;
+}

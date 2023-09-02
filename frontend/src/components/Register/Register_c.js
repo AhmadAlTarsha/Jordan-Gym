@@ -68,8 +68,8 @@ const {setRegister,register,setRole,role}=useContext(AppContext)
             setRole(e.target.value)
          console.log(role);
         }}>
-          <option value='64e4f00a4eafc1ed54ea4b38'>User</option>
-          <option value='64e4efe74eafc1ed54ea4b36'  >Gym Owner</option>
+          <option value='64f27110b4c647371db0d38f'>User</option>
+          <option value='64f270ddb4c647371db0d38d'  >Gym Owner</option>
         </select>
         <button onClick={() => {
        const newuser=  {firstName,lastName,age,email,password,role}
