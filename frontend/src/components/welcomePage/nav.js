@@ -13,7 +13,7 @@ const Navbar = () => {
   
     <nav className="navbar">
       <div className="container">
-        <div className="logo">GymLogo</div>
+        <div className="logo">Jordan Gym</div>
          <ul className="nav-links">
       {/* {!loggedIn?<Link to="/login">login</Link>:null} */}
      {loggedIn? <Link to="/gympost">go to the gym page</Link>:null}

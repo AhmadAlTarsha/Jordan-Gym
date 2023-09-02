@@ -111,7 +111,8 @@ const userId=req.userId
     let gymowner= req.params.id;
   console.log(gymowner);
     gymPostModel
-      .find({ gymOwner: gymowner })
+      .find({ gymOwner: gymowner }).populate("gymOwner", "firstName -_id").populate("comment", 
+      "comment -_id")
       .then((gym) => {
         if (!gym.length) {
           return res.status(404).json({
@@ -136,7 +137,8 @@ const userId=req.userId
   const getGymById = (req, res) => {
     let id = req.params.id;
     gymPostModel
-      .findById(id).populate("gymOwner", "firstName -_id")
+      .findById(id).populate("gymOwner", "firstName -_id").populate("comment", 
+      "comment -_id")
       
       .exec()
       .then((gym) => {

@@ -46,7 +46,7 @@ const MyGym = () => {
   return (
     <>
       {myGym.length !== 0 ? myGym.map((oneGym) => {
-        return <div className='mygym-container' ><div className='updateGymInfo'><p>Current Name : {oneGym.name}</p> <input placeholder='update Your Gym Name' onChange={(e) => {
+        return <div key={oneGym._id} className='mygym-container' ><div className='updateGymInfo'><p>Current Name : {oneGym.name}</p> <input placeholder='update Your Gym Name' onChange={(e) => {
           console.log(e.target.value);
           console.log(oneGym);
           setUpdateGymName(e.target.value)

@@ -43,7 +43,7 @@ setLoggedIn,loginMessage,setLoginMessage,setIsLoggedIn, setUserId,setGymOwner,se
       })
       .catch((error) => {
         console.log(error);
-        setLoginMessage(error.response.data.message);
+        setLoginMessage(error?.response?.data?.message);
       });
      
   };

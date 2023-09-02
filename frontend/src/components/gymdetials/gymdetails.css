@@ -1,0 +1,62 @@
+/* Gymdetails.css */
+
+/* Style the container */
+.gym-details-container {
+    padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin: 20px;
+  max-width: 600px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  .gym-details-container h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  /* Style individual elements */
+  .gym-details-container p {
+    font-size: 18px;
+  }
+  
+  .gym-details-container textarea {
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+    min-height: 100px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+    font-size: 16px;
+  }
+  .gym-details-container button {
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 10px 20px;
+  }
+  .gym-details-container .comment-button {
+    background-color: #f39c12;
+    color: #fff;
+  }
+  
+  /* .comment-button {
+    margin: 10px 0;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+  
+  .back-button {
+    background-color: #ccc;
+  }
+   */
+   .gym-details-container .back-button {
+    background-color: #ccc;
+    color: #333;
+  }

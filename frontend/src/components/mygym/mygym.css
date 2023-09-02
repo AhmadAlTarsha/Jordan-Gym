@@ -1,23 +1,48 @@
+.main_screen{
+    display: flex;
+    flex-direction: column;
+   align-items: center;
+}
 .mygym-container{
-    justify-content: center;
+    /* 
     align-items: center;
     display: grid;
     width: 100%;
-  
-    gap: 50px;
-}
-.updateGymInfo{
-   align-items: center;
+    gap: 50px; */
+    /* display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; */
+    width: 40%;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
    
-    
-    display: flex;
-    gap: 50px;
 }
-
-.update-button{
-    background-color: #f39c12;
-    color: white;
-    padding: 10px 20px;
+.mygym-container input {
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 3px;
+    width: 100%; /* Expand the input to fill its container */
+    margin-bottom: 10px;
+  }
+.mygym-container button {
+    background: #f39c12;
+    color: #efedea;
     border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
     cursor: pointer;
-}
+  }
+  .mygym-container a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+
+  .mygym-container h1 {
+    margin-top: 10px;
+  }
+/*  */

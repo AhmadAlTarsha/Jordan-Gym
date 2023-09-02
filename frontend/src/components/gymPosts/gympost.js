@@ -21,6 +21,7 @@ const Gympost = () => {
  
        console.log(response.data.gym);
        setGymPost(response.data.gym)
+       //console.log(response.data.gym[0].comment);
       
   
 
@@ -32,34 +33,36 @@ const Gympost = () => {
 
   }, [])
 
-useEffect(()=>{
-    axios.get(`http://localhost:5000/gym/${currentGymId}`).then((response) => {
+// useEffect(()=>{
+//     axios.get(`http://localhost:5000/gym/${currentGymId}`).then((response) => {
 
       
 
-  //  console.log(response.data.gym);
-    setCurrentGym(response.data.gym)
-    console.log(response.data.gym.gymOwner.firstName);
-    console.log(currentGym);
+//   //  console.log(response.data.gym);
+//     setCurrentGym(response.data.gym)
+//     console.log(response.data.gym.gymOwner.firstName);
+//     console.log(currentGym);
 
   
 
 
- }).catch((err) => {
+//  }).catch((err) => {
   
-   console.log(err);
- })
-},[])
+//    console.log(err);
+//  })
+// },[])
 
 
   return (
- <>
-    { <div className= "gympost-container">{ gympost.map((oneGym)=>{
-
- 
-      return <div  className='gympost'><h1>{oneGym.name}</h1> <p>{oneGym.location}</p>  <p>{oneGym.gymOwner.firstName}</p><p>{ oneGym.comment.map((comment)=>{
-        return <>{comment}</>
-      })}</p><button onClick={()=>{
+ < >
+     <div className= "gympost-container">{ gympost.map((oneGym)=>{
+const allComments=oneGym.comment
+//console.log(allComments);
+      
+  
+      return <div key={oneGym._id} className='gympost'><h1>{oneGym.name}</h1> <p>{oneGym.location}</p>  <p>{oneGym.gymOwner.firstName}</p><div>{allComments.map((comment)=>{
+        return <p>{comment.comment}</p>
+      })}</div><button onClick={()=>{
 console.log(oneGym._id);
 setCurrentGymId(oneGym._id)
 console.log(currentGymId);
@@ -72,7 +75,7 @@ navigate(`/gymDetails`)
 
 // }, [])
       }} >view details</button></div>
-    })}</div>}</>
+    })}</div></>
   )
 }
 

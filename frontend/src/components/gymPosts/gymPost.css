@@ -1,19 +1,64 @@
 .gympost-container{
     gap: 20px;
     display: flex;
-    grid-template-columns: auto;
+    /* grid-template-columns: auto; */
+    flex-wrap: wrap;
 }
 
 .gympost{
-    width: 50%;
-    height: 200px;
-    display: grid;
+    /* width: 50%;
+    
+   
     justify-content: start;
     border: 1px solid gray;
      border-radius: 10px;
- 
+     gap: 50px; */
+     background-color: #f7f7f7;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  transition: transform 0.2s ease;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;
+  display: grid;
 }
+.gympost:hover {
+    transform: translateY(-5px);
+  }
+  .gympost h1 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+.gympost p {
+    margin: 0;
+    font-size: 1rem;
+    color: #333;
+  }
+  .gympost button {
+    background-color:  #f39c12;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .gympost button:hover {
+    background-color: #865c18;
+  }
+  
 
+  .gympost .comment {
+    margin-top: 10px;
+    padding: 5px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+  }
+  
 
 @media (max-width: 768px) {
 .gympost-container{
