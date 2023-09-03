@@ -4,11 +4,12 @@ const gymModel =require("../models/gymInfo")
 const createNewComment = (req, res) => {
   const id=req.params.id
 //const commenter=req.token.userId
-    const { comment } = req.body;
-    const newcomment = new commentModel({ comment,  });
+    const { comment ,commenter } = req.body;
+    const newcomment = new commentModel({ comment,commenter  });
     newcomment
     .save()
     .then((result) => {
+      console.log(result);
       gymModel
         .findByIdAndUpdate(
          {_id:id},
@@ -19,7 +20,7 @@ const createNewComment = (req, res) => {
         .then(() => {
           res.status(201).json({
             success: true,
-            message: `ok`,
+            message: `okk`,
             comment: result,
           });
         })

@@ -7,6 +7,7 @@ import { AppContext } from '../../App';
 const Gympost = () => {
   const navigate = useNavigate();
   const [gympost,setGymPost]=useState([])
+  const [numOfComment,setNumOfComment]=useState(0)
  const { token,currentGymId, setCurrentGymId,currentGym,setCurrentGym } = useContext(AppContext)
   useEffect(() => {
     
@@ -57,11 +58,13 @@ const Gympost = () => {
  < >
      <div className= "gympost-container">{ gympost.map((oneGym)=>{
 const allComments=oneGym.comment
-//console.log(allComments);
+console.log(allComments);
       
   
-      return <div key={oneGym._id} className='gympost'><h1>{oneGym.name}</h1> <p>{oneGym.location}</p>  <p>{oneGym.gymOwner.firstName}</p><div>{allComments.map((comment)=>{
-        return <p>{comment.comment}</p>
+      return <div key={oneGym._id} className='gympost'><h1>{oneGym.name}</h1>  <p>{`membership price is: ${oneGym.mempershipPrice} $` 
+      }</p><p>Gym FeedBack (  {allComments.length} Comment) </p><div>{allComments.map((comment)=>{
+        
+        return <div key={comment._id} className='allComment' > <li>{`${comment?.commenter?.firstName} : ${comment?.comment} `}</li></div>
       })}</div><button onClick={()=>{
 console.log(oneGym._id);
 setCurrentGymId(oneGym._id)

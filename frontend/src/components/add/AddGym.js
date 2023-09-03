@@ -10,7 +10,7 @@ const AddGym = () => {
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
   const [nameOfTrainer, setNameOfTrainer] = useState("");
-  const [membershipPrice, setMembershipPrice] = useState("");
+  const [mempershipPrice, setMembershipPrice] = useState("");
   const [facilities, setFacilities] = useState("");
   const { token, userId, gymOwner } = useContext(AppContext);
 
@@ -69,7 +69,7 @@ const AddGym = () => {
             name,
             location,
             nameOfTrainer,
-            membershipPrice,
+            mempershipPrice,
             facilities
           };
 

@@ -16,9 +16,9 @@ const Navbar = () => {
         <div className="logo">Jordan Gym</div>
          <ul className="nav-links">
       {/* {!loggedIn?<Link to="/login">login</Link>:null} */}
-     {loggedIn? <Link to="/gympost">go to the gym page</Link>:null}
-  {loggedIn&&user_role=="Gym_owner"? <Link to="/addGym">add my gym</Link> :null}
-  {loggedIn&&user_role=="Gym_owner"? <Link to="/myGym"> my gym</Link> :null}
+     {loggedIn? <Link to="/gympost">Go To The Gym Page</Link>:null}
+  {loggedIn&&user_role=="Gym_owner"? <Link to="/addGym">Add Your Gym</Link> :null}
+  {loggedIn&&user_role=="Gym_owner"? <Link to="/myGym"> Your Gym Profile </Link> :null}
   {loggedIn? <Link to ="/"
    onClick={() => {
       setLoggedIn(false)
@@ -27,7 +27,7 @@ const Navbar = () => {
       setUserId(null)
       localStorage.clear();
     }}
-   >logout</Link>:null}
+   >Logout</Link>:null}
          
         </ul>
       </div>

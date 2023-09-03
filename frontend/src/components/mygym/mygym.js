@@ -80,7 +80,7 @@ const MyGym = () => {
             console.log(error);
           })
           navigate("/gympost")
-        }} >submit</button> </div>
+        }} >submit</button> <button></button> </div>
       }) : <h1>You don't have gym profile yet Go to the <Link to="/addGym">Add My Gym</Link></h1>}
     </>
   )

@@ -24,7 +24,7 @@
     border: 1px solid #ccc;
     padding: 5px;
     border-radius: 3px;
-    width: 100%; /* Expand the input to fill its container */
+    width: 100%; 
     margin-bottom: 10px;
   }
 .mygym-container button {

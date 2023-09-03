@@ -1,3 +1,4 @@
+const { populate } = require("../models/comment");
 const gymPostModel = require("../models/gymInfo");
 
 const createNewGymPost = (req, res) => {
@@ -80,9 +81,12 @@ const userId=req.userId
   const getAllGym = (req, res) => {
   //  const userId = req.token.userId;
     gymPostModel
-      .find().populate("gymOwner", "firstName -_id").populate("comment", 
-      "comment -_id")
-       
+      .find().populate("gymOwner", "firstName -_id").populate({
+        path: 'comment',
+        // Get friends of friends - populate the 'friends' array for every friend
+        populate: { path: 'commenter',select: 'firstName -_id' }
+      })
+      
       .exec()
       .then((gym) => {
         if (gym.length) {
@@ -111,8 +115,11 @@ const userId=req.userId
     let gymowner= req.params.id;
   console.log(gymowner);
     gymPostModel
-      .find({ gymOwner: gymowner }).populate("gymOwner", "firstName -_id").populate("comment", 
-      "comment -_id")
+      .find({ gymOwner: gymowner }).populate("gymOwner", "firstName -_id").populate({
+        path: 'comment',
+        // Get friends of friends - populate the 'friends' array for every friend
+        populate: { path: 'commenter', select: 'firstName -_id'} 
+      })
       .then((gym) => {
         if (!gym.length) {
           return res.status(404).json({
@@ -137,8 +144,11 @@ const userId=req.userId
   const getGymById = (req, res) => {
     let id = req.params.id;
     gymPostModel
-      .findById(id).populate("gymOwner", "firstName -_id").populate("comment", 
-      "comment -_id")
+      .findById(id).populate("gymOwner", "firstName -_id").populate({
+        path: 'comment',
+        // Get friends of friends - populate the 'friends' array for every friend
+        populate: { path: 'commenter', select: 'firstName -_id'} 
+      })
       
       .exec()
       .then((gym) => {

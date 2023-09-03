@@ -65,7 +65,7 @@ setLoggedIn,loginMessage,setLoginMessage,setIsLoggedIn, setUserId,setGymOwner,se
       />
       <button onClick={handleLogin}>Login</button>
       <p className="loginMessage">
-        not a member? <Link className="register_link" to="/register">Register now</Link>
+        Not a Member? <Link className="register_link" to="/register">Register now</Link>
       </p>
       <p className="loginMessage">{loginMessage}</p>
     </div>

@@ -9,7 +9,7 @@ import { AppContext } from "../../App";
 import axios from "axios";
 const Gymdetails = () => {
   const [newComment, setNewComment] = useState("")
-  const { token, currentGymId, currentGym, setCurrentGym } = useContext(AppContext)
+  const { token, currentGymId, currentGym, setCurrentGym ,userId} = useContext(AppContext)
   useEffect(() => {
     axios.get(`http://localhost:5000/gym/${currentGymId}`).then((response) => {
 
@@ -44,7 +44,7 @@ const Gymdetails = () => {
         setNewComment(e.target.value)
 
       }} placeholder="add comminte"></textarea><button className="comment-button" onClick={() => {
-        axios.post(`http://localhost:5000/comment/create/${currentGymId}`, { comment: newComment }, {
+        axios.post(`http://localhost:5000/comment/create/${currentGymId}`, { comment: newComment ,commenter:userId}, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
