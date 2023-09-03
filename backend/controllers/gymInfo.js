@@ -146,7 +146,7 @@ const userId=req.userId
     gymPostModel
       .findById(id).populate("gymOwner", "firstName -_id").populate({
         path: 'comment',
-        // Get friends of friends - populate the 'friends' array for every friend
+       
         populate: { path: 'commenter', select: 'firstName -_id'} 
       })
       

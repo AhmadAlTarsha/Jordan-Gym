@@ -36,11 +36,12 @@ const Gymdetails = () => {
 
 
   return (
-    <div className="gym-details-container"><p>{currentGym.name}</p><p>{currentGym.location}</p><p>{currentGym.mempershipPrice
-    }</p><p>{currentGym.facilities
+    <div className="gym-details-container"><div className="gym-info" ><p>Name : {currentGym.name}</p><p>Location : {currentGym.location}</p><p>MempershipPrice : {currentGym.mempershipPrice
+    } / Month</p><p>facilities : {currentGym.facilities
     }
-      </p><p>{currentGym?.gymOwner?.firstName}
-      </p><textarea className="comment-input" onChange={(e) => {
+      </p><p>Coach : {currentGym?.nameOfTriner}
+      </p><p>Gym Owner : {currentGym?.gymOwner?.firstName}
+      </p></div><textarea className="comment-input" onChange={(e) => {
         setNewComment(e.target.value)
 
       }} placeholder="add comminte"></textarea><button className="comment-button" onClick={() => {

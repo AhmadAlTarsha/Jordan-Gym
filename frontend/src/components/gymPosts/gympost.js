@@ -61,8 +61,7 @@ const allComments=oneGym.comment
 console.log(allComments);
       
   
-      return <div key={oneGym._id} className='gympost'><h1>{oneGym.name}</h1>  <p>{`membership price is: ${oneGym.mempershipPrice} $` 
-      }</p><p>Gym FeedBack (  {allComments.length} Comment) </p><div>{allComments.map((comment)=>{
+      return <div key={oneGym._id} className='gympost'><h1>{oneGym.name}</h1> <p>Gym FeedBack (  {allComments.length} Comment) </p><div>{allComments.map((comment)=>{
         
         return <div key={comment._id} className='allComment' > <li>{`${comment?.commenter?.firstName} : ${comment?.comment} `}</li></div>
       })}</div><button onClick={()=>{

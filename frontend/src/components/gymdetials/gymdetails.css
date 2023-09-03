@@ -42,6 +42,11 @@
     background-color: #f39c12;
     color: #fff;
   }
+  .gym-info{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
   
   /* .comment-button {
     margin: 10px 0;

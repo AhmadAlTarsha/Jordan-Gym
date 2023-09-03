@@ -15,6 +15,7 @@ const MyGym = () => {
   const [updateGymFacility, setUpdateGymFacility] = useState(myGym.facilities)
   const [updateGymInfo, setUpdateGymInfo] = useState("")
   const { token, userId } = useContext(AppContext)
+  const[length,setLength]=useState(0)
   useEffect(() => {
 
     //console.log(token);
@@ -38,7 +39,7 @@ const MyGym = () => {
     })
 
 
-  }, [])
+  }, [length])
 
 
 
@@ -66,7 +67,7 @@ const MyGym = () => {
         }</p> <input placeholder='update Your Gym Facility' onChange={(e) => {
           console.log(e.target.value);
           setUpdateGymFacility(e.target.value)
-        }}></input> </div>< button className='update-button' onClick={() => {
+        }}></input> </div><div className='x'>< button className='update-button' onClick={() => {
           console.log(oneGym._id);
           axios.put(`http://localhost:5000/gym/update/${oneGym._id}`, { name: updateGymName,location:updateGymLocation,nameOfTriner:updateGymTrainer,mempershipPrice:updateGymMemberPrice,facilities:updateGymFacility }, {
             headers: {
@@ -80,7 +81,19 @@ const MyGym = () => {
             console.log(error);
           })
           navigate("/gympost")
-        }} >submit</button> <button></button> </div>
+        }} >submit</button> <button onClick={()=>{
+          axios.delete(`http://localhost:5000/gym/delete/${oneGym._id}`,{
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }).then((response)=>{
+            setLength(myGym.length)
+            console.log(response);
+            
+          }).catch((err)=>{
+            console.log(err);
+          })
+        }} >Delete This Gym </button> </div></div>
       }) : <h1>You don't have gym profile yet Go to the <Link to="/addGym">Add My Gym</Link></h1>}
     </>
   )

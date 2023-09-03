@@ -45,4 +45,8 @@
   .mygym-container h1 {
     margin-top: 10px;
   }
+  .x{
+    display: flex;
+    justify-content: space-around;
+  }
 /*  */
