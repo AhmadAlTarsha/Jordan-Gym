@@ -20,7 +20,7 @@ const createNewComment = (req, res) => {
         .then(() => {
           res.status(201).json({
             success: true,
-            message: `okk`,
+            message: `comment created`,
             comment: result,
           });
         })

@@ -49,4 +49,8 @@
     display: flex;
     justify-content: space-around;
   }
+  .b{
+    font-weight: bold;
+    color: #f39c12;
+  }
 /*  */

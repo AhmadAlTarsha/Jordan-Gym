@@ -16,7 +16,7 @@ const Navbar = () => {
         <div className="logo">Jordan Gym</div>
          <ul className="nav-links">
       {/* {!loggedIn?<Link to="/login">login</Link>:null} */}
-     {loggedIn? <Link to="/gympost">Go To The Gym Page</Link>:null}
+     {loggedIn? <Link to="/gympost">Go To The Gym’s Page</Link>:null}
   {loggedIn&&user_role=="Gym_owner"? <Link to="/addGym">Add Your Gym</Link> :null}
   {loggedIn&&user_role=="Gym_owner"? <Link to="/myGym"> Your Gym Profile </Link> :null}
   {loggedIn? <Link to ="/"

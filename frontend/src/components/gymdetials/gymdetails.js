@@ -4,11 +4,12 @@ import React, {
   useEffect,
 } from "react";
 import "./gymdetails.css"
-import { Routes, Route, useNavigate, } from "react-router-dom";
+import { Routes, Route, useNavigate, Link, } from "react-router-dom";
 import { AppContext } from "../../App";
 import axios from "axios";
 const Gymdetails = () => {
   const [newComment, setNewComment] = useState("")
+  const [commentMassege, setcommentMassege] = useState("");
   const { token, currentGymId, currentGym, setCurrentGym ,userId} = useContext(AppContext)
   useEffect(() => {
     axios.get(`http://localhost:5000/gym/${currentGymId}`).then((response) => {
@@ -41,7 +42,7 @@ const Gymdetails = () => {
     }
       </p><p>Coach : {currentGym?.nameOfTriner}
       </p><p>Gym Owner : {currentGym?.gymOwner?.firstName}
-      </p></div><textarea className="comment-input" onChange={(e) => {
+      </p> <Link href="">Click to Contact With Us And Be One of Our Family</Link></div><textarea className="comment-input" onChange={(e) => {
         setNewComment(e.target.value)
 
       }} placeholder="add comminte"></textarea><button className="comment-button" onClick={() => {
@@ -50,13 +51,15 @@ const Gymdetails = () => {
             Authorization: `Bearer ${token}`,
           },
         }).then((res) => {
-          console.log(res);
+        
+          setcommentMassege(res.data.message)
         }).catch((err) => {
           console.log(err);
+          setcommentMassege("Write Something !")
         })
       }}>Add</button><button className="back-button" onClick={() => {
         navigate("/gympost")
-      }}>back</button></div>
+      }}>back</button><p className="xx">{commentMassege}</p></div>
   )
 }
 

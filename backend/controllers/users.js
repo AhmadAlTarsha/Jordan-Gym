@@ -66,6 +66,7 @@ const login = (req, res) => {
           userId: result._id,
        
           role: result.role,
+          name: result.firstName,
         
         };
 
@@ -78,7 +79,8 @@ const login = (req, res) => {
           message: `Valid login credentials`,
           token: token,
           role: result.role,
-       userId:result._id
+       userId:result._id,
+       name: result.firstName,
         });
         console.log(token);
       } catch (error) {

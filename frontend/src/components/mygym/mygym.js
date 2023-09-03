@@ -14,7 +14,7 @@ const MyGym = () => {
   const [updateGymMemberPrice, setUpdateGymMemberPrice] = useState(myGym.mempershipPrice)
   const [updateGymFacility, setUpdateGymFacility] = useState(myGym.facilities)
   const [updateGymInfo, setUpdateGymInfo] = useState("")
-  const { token, userId } = useContext(AppContext)
+  const { token, userId ,Name, } = useContext(AppContext)
   const[length,setLength]=useState(0)
   useEffect(() => {
 
@@ -45,9 +45,10 @@ const MyGym = () => {
 
 
   return (
-    <>
+    <><p className='b'>Welcome {Name} This is Your Gym Profile </p>
       {myGym.length !== 0 ? myGym.map((oneGym) => {
-        return <div key={oneGym._id} className='mygym-container' ><div className='updateGymInfo'><p>Current Name : {oneGym.name}</p> <input placeholder='update Your Gym Name' onChange={(e) => {
+        
+        return  <div key={oneGym._id} className='mygym-container' ><div className='updateGymInfo'><p>Current Name : {oneGym.name}</p> <input placeholder='update Your Gym Name' onChange={(e) => {
           console.log(e.target.value);
           console.log(oneGym);
           setUpdateGymName(e.target.value)
@@ -93,7 +94,7 @@ const MyGym = () => {
           }).catch((err)=>{
             console.log(err);
           })
-        }} >Delete This Gym </button> </div></div>
+        }} >Delete This Gym </button> </div></div> 
       }) : <h1>You don't have gym profile yet Go to the <Link to="/addGym">Add My Gym</Link></h1>}
     </>
   )

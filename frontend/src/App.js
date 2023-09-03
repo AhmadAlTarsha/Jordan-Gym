@@ -20,6 +20,7 @@ function App() {
   const [register ,setRegister ]=useState("")
   const [loginMessage ,setLoginMessage  ]=useState("")
   const [userName ,setUserName ]=useState("")
+  const [Name ,setName ]=useState("")
   const [role, setRole] = useState("64f27110b4c647371db0d38f")
   const [gymOwner, setGymOwner] = useState("")
   const [currentGym,setCurrentGym]=useState("")
@@ -27,7 +28,7 @@ function App() {
  
   return (
     <div className="main_screen">
-          <><AppContext.Provider value={{loggedIn,setLoggedIn,setUserRole,user_role,setRegister,register,loginMessage,setLoginMessage,setToken,token,setUserName,userName ,role, setRole,setUserId,userId,gymOwner, setGymOwner,currentGymId, setCurrentGymId,currentGym,setCurrentGym}}>
+          <><AppContext.Provider value={{loggedIn,setLoggedIn,setUserRole,user_role,setRegister,register,loginMessage,setLoginMessage,setToken,token,setUserName,userName ,role, setRole,setUserId,userId,gymOwner, setGymOwner,currentGymId, setCurrentGymId,currentGym,setCurrentGym,Name ,setName}}>
    
  {Homescreen}
    <Navbar />

@@ -5,11 +5,12 @@ import axios from "axios";
 import { AppContext } from "../../App";
 const Login = () => {
   const {
-setLoggedIn,loginMessage,setLoginMessage,setIsLoggedIn, setUserId,setGymOwner,setUserRole,setToken,
+setLoggedIn,loginMessage,setLoginMessage,setIsLoggedIn, setUserId,setGymOwner,setUserRole,setToken,Name, setName
   } = useContext(AppContext);
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  
 
   const handleLogin = () => {
     const user = { email, password };
@@ -21,12 +22,13 @@ setLoggedIn,loginMessage,setLoginMessage,setIsLoggedIn, setUserId,setGymOwner,se
           const token = res.data.token;
           const role = res.data.role.role;
           const user_id = res.data.userId;
+          const name=res.data.name
 
           localStorage.setItem("token", token);
           localStorage.setItem("userId", user_id);
           localStorage.setItem("userRole", role);
           localStorage.setItem("loggedIn", true);
-          
+          setName(name)
           setGymOwner(user_id);
           setUserRole(role);
           setLoggedIn(true);

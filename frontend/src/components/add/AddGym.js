@@ -13,6 +13,7 @@ const AddGym = () => {
   const [mempershipPrice, setMembershipPrice] = useState("");
   const [facilities, setFacilities] = useState("");
   const { token, userId, gymOwner } = useContext(AppContext);
+  const [AddMassege, setAddMassege] = useState("");
 
   return (
     <div className="add-gym-container">
@@ -78,14 +79,18 @@ const AddGym = () => {
               Authorization: `Bearer ${token}`,
             },
           }).then((res) => {
+            console.log(res.data);
+            setAddMassege(res.data.message)
             console.log(res);
           }).catch((err) => {
             console.log(err);
+            setAddMassege("Verify that all information has been entered")
           });
         }}
       >
         Add
       </button>
+      <p className="xx">{AddMassege}</p>
     </div>
   );
 }
