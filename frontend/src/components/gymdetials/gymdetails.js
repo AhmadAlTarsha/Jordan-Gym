@@ -40,7 +40,7 @@ const Gymdetails = () => {
     <div className="gym-details-container"><div className="gym-info" ><p>Name : {currentGym.name}</p><p>Location : {currentGym.location}</p><p>MempershipPrice : {currentGym.mempershipPrice
     } / Month</p><p>facilities : {currentGym.facilities
     }
-      </p><p>Coach : {currentGym?.nameOfTriner}
+      </p><p>Head Coach : {currentGym.nameOfTriner}
       </p><p>Gym Owner : {currentGym?.gymOwner?.firstName}
       </p> <Link href="">Click to Contact With Us And Be One of Our Family</Link></div><textarea className="comment-input" onChange={(e) => {
         setNewComment(e.target.value)

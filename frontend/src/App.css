@@ -3,3 +3,7 @@
     flex-direction: column;
     gap: 20px;
 }
+.dynamic_input{
+    display: flex;
+    flex-direction:column ;
+}

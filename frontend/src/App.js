@@ -32,7 +32,7 @@ function App() {
    
  {Homescreen}
    <Navbar />
-  
+ 
       
 <Routes>
    

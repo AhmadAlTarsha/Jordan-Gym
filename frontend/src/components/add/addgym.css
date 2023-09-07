@@ -28,7 +28,10 @@
   .xx{
     color: #f39c12;;
   }
-  
+  .memperShip_input{
+    display: flex;
+   
+  }
 
   @media (max-width: 600px) {
     .add-gym-container {
