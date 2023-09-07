@@ -68,4 +68,8 @@
   .xx{
     color: #f39c12;;
   }
-  
+  .memberShip_div{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }

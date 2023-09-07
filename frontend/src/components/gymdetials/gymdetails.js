@@ -37,11 +37,14 @@ const Gymdetails = () => {
 
 
   return (
-    <div className="gym-details-container"><div className="gym-info" ><p>Name : {currentGym.name}</p><p>Location : {currentGym.location}</p><p>MempershipPrice : {currentGym.mempershipPrice
-    } / Month</p><p>facilities : {currentGym.facilities
+    <div className="gym-details-container"><div className="gym-info" ><p>Name : {currentGym?.name}</p><p>Location : {currentGym.location}</p><div className="memberShip_div"><h3>MempershipPrice : </h3><p>{currentGym?.mempershipPrice?.oneMonth
+    } / Month</p><p>{currentGym?.mempershipPrice?.threeMonth
+    } /Three Month</p><p>{currentGym?.mempershipPrice?.oneYear
+    } / Annually</p></div><p>facilities : {currentGym.facilities
     }
-      </p><p>Head Coach : {currentGym.nameOfTriner}
-      </p><p>Gym Owner : {currentGym?.gymOwner?.firstName}
+      </p><ul>Name Of Gym coach's : {currentGym?.nameOfTriner?.map(oneCoach => {
+       return <li>{oneCoach}</li>
+      })}</ul><p>Gym Owner : {currentGym?.gymOwner?.firstName}
       </p> <Link href="">Click to Contact With Us And Be One of Our Family</Link></div><textarea className="comment-input" onChange={(e) => {
         setNewComment(e.target.value)
 

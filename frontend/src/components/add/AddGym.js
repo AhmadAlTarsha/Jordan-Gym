@@ -11,11 +11,17 @@ const AddGym = () => {
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
   const [nameOfTriner, setNameOfTrainer] = useState(['']);
-  const [mempershipPrice, setMembershipPrice] = useState("");
+  const [mempershipPrice, setMembershipPrice] = useState({});
+  const [oneMonth,setOneMonth]=useState(0)
+  const [threeMonth,setThreeMonth]=useState(0)
+  const [oneYear,setOneYear]=useState(0)
+  const [numberOfMember,setNumberOfMember]=useState(0)
+  const [ClosingDays,setClosingDays]=useState("")
   const [facilities, setFacilities] = useState("");
   const { token, userId, gymOwner } = useContext(AppContext);
   const [AddMassege, setAddMassege] = useState("");
   const [numInputs, setNumInputs] = useState(1);
+  const [test, settest] = useState(null);
     const [inputValues, setInputValues] = useState(['']);
     
     const handleNumInputsChange = (e) => {
@@ -84,33 +90,65 @@ const AddGym = () => {
        
       </form>
     </div>
-<label>Mempership Price</label>
+<label>Mempership Price :</label>
 <div className="memperShip_input"><input
         type="text"
         name="membershipPrice"
-        placeholder="Gym Membership Price"
+        placeholder="one Month"
         onChange={(e) => {
-          setMembershipPrice(e.target.value);
+          setOneMonth(e.target.value);
         }}
         required
       /><input
       type="text"
       name="membershipPrice"
-      placeholder="Gym Membership Price"
+      placeholder="Three Month"
       onChange={(e) => {
-        setMembershipPrice(e.target.value);
+        setThreeMonth(e.target.value);
       }}
       required
     /><input
     type="text"
     name="membershipPrice"
-    placeholder="Gym Membership Price"
+    placeholder="Annually"
     onChange={(e) => {
-      setMembershipPrice(e.target.value);
+      setOneYear(e.target.value);
     }}
     required
   /></div>
-      
+      <input
+        type="number"
+        name="Number Of Members"
+        placeholder="Number Of Members"
+        onChange={(e) => {
+          setNumberOfMember(e.target.value);
+        }}
+        required
+      />
+    
+     <div class="weekDays-selector">
+       <label>Closing Days:</label>
+  <input onClick={()=>{
+    if (test==null) {
+      settest(1)
+      console.log(test);
+    }else{settest(null)
+    console.log(test);}
+  }} type="checkbox" id="weekday-mon" class="weekday" />
+  <label for="weekday-mon">M</label>
+  <input type="checkbox" id="weekday-tue" class="weekday" />
+  <label for="weekday-tue">T</label>
+  <input type="checkbox" id="weekday-wed" class="weekday" />
+  <label for="weekday-wed">W</label>
+  <input type="checkbox" id="weekday-thu" class="weekday" />
+  <label for="weekday-thu">T</label>
+  <input type="checkbox" id="weekday-fri" class="weekday" />
+  <label for="weekday-fri">F</label>
+  <input type="checkbox" id="weekday-sat" class="weekday" />
+  <label for="weekday-sat">S</label>
+  <input type="checkbox" id="weekday-sun" class="weekday" />
+  <label for="weekday-sun">S</label>
+</div>
       <input
         type="text"
         name="facilities"
@@ -124,13 +162,20 @@ const AddGym = () => {
         className="add-button"
         onClick={() => {
            handleSubmit()
+           setMembershipPrice({oneMonth:oneMonth,threeMonth:threeMonth,oneYear:oneYear})
+           console.log(oneMonth);
+           console.log(threeMonth);
+           console.log(oneYear);
+           console.log(mempershipPrice);
           const newGym = {
             gymOwner: userId,
             name,
             location,
             nameOfTriner,
             mempershipPrice,
-            facilities
+            facilities,
+            numberOfMember
+
           };
          
           axios.post(`http://localhost:5000/gym/create`, newGym, {

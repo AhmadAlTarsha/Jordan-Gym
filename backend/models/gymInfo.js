@@ -7,11 +7,12 @@ const gymInfo = new mongoose.Schema({
     location: { type: String },
     image:[ {type:String}],
     nameOfTriner:[ { type: String }],
-    mempershipPrice:[ { type: Object }],
+    mempershipPrice:{ type: Object },
     facilities:[{ type: String }],
     numberOfMember:{type:Number},
-    branches:{type:String}, 
     openingTime: [{type:Number}],
+    ClosingDays:{type:String},
+
     comment:  [{ type: mongoose.Schema.Types.ObjectId, ref: "review" }],
     Userlike:[{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
 
