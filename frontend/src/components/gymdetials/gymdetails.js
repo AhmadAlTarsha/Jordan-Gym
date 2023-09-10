@@ -19,7 +19,7 @@ const Gymdetails = () => {
       console.log(response.data.gym);
       setCurrentGym(response.data.gym)
       // console.log(response.data);
-      // console.log(currentGym);
+       console.log(currentGym);
 
 
 

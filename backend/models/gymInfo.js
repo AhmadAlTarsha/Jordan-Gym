@@ -11,7 +11,7 @@ const gymInfo = new mongoose.Schema({
     facilities:[{ type: String }],
     numberOfMember:{type:Number},
     openingTime: [{type:Number}],
-    ClosingDays:{type:String},
+    ClosingDays:[{type:Object}],
 
     comment:  [{ type: mongoose.Schema.Types.ObjectId, ref: "review" }],
     Userlike:[{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],

@@ -3,8 +3,8 @@ const gymPostModel = require("../models/gymInfo");
 
 const createNewGymPost = (req, res) => {
 const userId=req.userId
-    const { gymOwner, name, location,nameOfTriner,mempershipPrice,facilities,numberOfMember,branches,openingTime,image,} = req.body;
-    const newGymPost = new gymPostModel({gymOwner, name, location,nameOfTriner,mempershipPrice,facilities,image,numberOfMember,branches,openingTime });
+    const { gymOwner, name, location,nameOfTriner,mempershipPrice,facilities,numberOfMember,branches,openingTime,ClosingDays,image,} = req.body;
+    const newGymPost = new gymPostModel({gymOwner, name, location,nameOfTriner,mempershipPrice,facilities,image,numberOfMember,branches,openingTime,ClosingDays });
     newGymPost
       .save()
       .then((result) => {

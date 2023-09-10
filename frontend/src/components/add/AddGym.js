@@ -7,22 +7,29 @@ import "./addgym.css";
 
 const AddGym = () => {
   const navigate = useNavigate();
-
+  const buttonClass ="inActive"
+  const status=false
+const [days,setDays]=useState([{day:"SU",status:status,buttonClass:buttonClass},{day:"MO",status:status,buttonClass:buttonClass},{day:"TU",status:status,buttonClass:buttonClass},{day:"WE",status:status,buttonClass:buttonClass},{day:"TH",status:status,buttonClass:buttonClass},{day:"FR",status:status,buttonClass:buttonClass},{day:"SA",status:status,buttonClass:buttonClass}])
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
   const [nameOfTriner, setNameOfTrainer] = useState(['']);
-  const [mempershipPrice, setMembershipPrice] = useState({});
   const [oneMonth,setOneMonth]=useState(0)
   const [threeMonth,setThreeMonth]=useState(0)
   const [oneYear,setOneYear]=useState(0)
+  const [mempershipPrice, setMembershipPrice] = useState({oneMonth:0,threeMonth:0,oneYear:0});
   const [numberOfMember,setNumberOfMember]=useState(0)
-  const [ClosingDays,setClosingDays]=useState("")
+  const [ClosingDays,setClosingDays]=useState([""])
   const [facilities, setFacilities] = useState("");
   const { token, userId, gymOwner } = useContext(AppContext);
   const [AddMassege, setAddMassege] = useState("");
   const [numInputs, setNumInputs] = useState(1);
-  const [test, settest] = useState(null);
-    const [inputValues, setInputValues] = useState(['']);
+  const [inputValues, setInputValues] = useState(['']);
+  
+  
+  
+  
+
+
     
     const handleNumInputsChange = (e) => {
       const count = parseInt(e.target.value, 10) || 0;
@@ -82,7 +89,8 @@ const AddGym = () => {
                 type="text"
             placeholder={`Coach Num ${index+1}`}
                 value={nameOfTriner[index]}
-                onChange={(e) => handleInputChange(e, index)}
+                onChange={(e) => {handleInputChange(e, index)
+                }}
               />
             </div>
           ))}
@@ -92,11 +100,16 @@ const AddGym = () => {
     </div>
 <label>Mempership Price :</label>
 <div className="memperShip_input"><input
-        type="text"
+       
         name="membershipPrice"
         placeholder="one Month"
         onChange={(e) => {
-          setOneMonth(e.target.value);
+ // setOneMonth(e.target.value)
+ setMembershipPrice({
+   ...mempershipPrice, // Spread the existing values
+   oneMonth: e.target.value // Update the oneMonth property
+  });
+  console.log(mempershipPrice);
         }}
         required
       /><input
@@ -104,15 +117,21 @@ const AddGym = () => {
       name="membershipPrice"
       placeholder="Three Month"
       onChange={(e) => {
-        setThreeMonth(e.target.value);
+        setMembershipPrice({
+          ...mempershipPrice, // Spread the existing values
+          threeMonth: e.target.value // Update the oneMonth property
+         });
       }}
       required
-    /><input
+    /><input 
     type="text"
     name="membershipPrice"
     placeholder="Annually"
     onChange={(e) => {
-      setOneYear(e.target.value);
+      setMembershipPrice({
+        ...mempershipPrice, // Spread the existing values
+        oneYear: e.target.value // Update the oneMonth property
+       });
     }}
     required
   /></div>
@@ -128,26 +147,39 @@ const AddGym = () => {
     
      <div class="weekDays-selector">
        <label>Closing Days:</label>
-  <input onClick={()=>{
-    if (test==null) {
-      settest(1)
-      console.log(test);
-    }else{settest(null)
-    console.log(test);}
-  }} type="checkbox" id="weekday-mon" class="weekday" />
-  <label for="weekday-mon">M</label>
-  <input type="checkbox" id="weekday-tue" class="weekday" />
-  <label for="weekday-tue">T</label>
-  <input type="checkbox" id="weekday-wed" class="weekday" />
-  <label for="weekday-wed">W</label>
-  <input type="checkbox" id="weekday-thu" class="weekday" />
-  <label for="weekday-thu">T</label>
-  <input type="checkbox" id="weekday-fri" class="weekday" />
-  <label for="weekday-fri">F</label>
-  <input type="checkbox" id="weekday-sat" class="weekday" />
-  <label for="weekday-sat">S</label>
-  <input type="checkbox" id="weekday-sun" class="weekday" />
-  <label for="weekday-sun">S</label>
+ 
+{days?.map((oneDay)=>{
+ const toggleDayStatus = (dayName) => {
+  console.log(dayName);
+  setDays((prevDays) => {
+ 
+    return prevDays.map((day) => {
+      if (day.day === dayName&&day.buttonClass=="inActive") {
+
+        return {day:dayName,status:!day.status,buttonClass:"active"}
+      }else if (day.day === dayName&&day.buttonClass=="active") {
+        return {day:dayName,status:!day.status,buttonClass:"inActive"}
+      }
+      return day;
+    });
+  });
+};
+
+  return <div class="weekDays-selector"> <button  onClick={
+    (e) => {toggleDayStatus(oneDay.day)
+      console.log(oneDay.buttonClass);
+     
+      // if (e.target.className=="inActive") {
+      //   setButtonClass("active")
+      //   console.log(1);
+      // }else{setButtonClass("inActive"), console.log(0);}
+    
+    }
+    
+  } type="checkbox" className={oneDay.buttonClass} value={oneDay.status}  >{oneDay.day}</button>
+  <label ></label></div>
+})}
+
 </div>
       <input
         type="text"
@@ -161,6 +193,11 @@ const AddGym = () => {
       <button
         className="add-button"
         onClick={() => {
+          // let arr=  days.filter((ele)=>{
+          //   return ele.status==true
+          //           })
+          //           console.log(arr);
+          //           setClosingDays(arr)
            handleSubmit()
            setMembershipPrice({oneMonth:oneMonth,threeMonth:threeMonth,oneYear:oneYear})
            console.log(oneMonth);
@@ -174,7 +211,8 @@ const AddGym = () => {
             nameOfTriner,
             mempershipPrice,
             facilities,
-            numberOfMember
+            numberOfMember,
+            ClosingDays
 
           };
          
@@ -192,9 +230,19 @@ const AddGym = () => {
           });
         }}
       >
-        Add
+        Submit
       </button>
+     
       <p className="xx">{AddMassege}</p>
+      <button onClick={()=>{
+        let arr=  days.filter((ele)=>{
+            return ele.status==true
+                    })
+                    console.log(arr);
+                    setClosingDays(arr)
+                   
+                    console.log(mempershipPrice);
+      }} >test</button>
     </div>
   );
 }
