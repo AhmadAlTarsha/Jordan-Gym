@@ -6,6 +6,12 @@ import "./addgym.css";
 
 
 const AddGym = () => {
+
+  useEffect(()=>{
+
+
+  })
+  
   const navigate = useNavigate();
   const buttonClass ="inActive"
   const status=false
@@ -18,7 +24,7 @@ const [days,setDays]=useState([{day:"SU",status:status,buttonClass:buttonClass},
   const [oneYear,setOneYear]=useState(0)
   const [mempershipPrice, setMembershipPrice] = useState({oneMonth:0,threeMonth:0,oneYear:0});
   const [numberOfMember,setNumberOfMember]=useState(0)
-  const [ClosingDays,setClosingDays]=useState([""])
+  const [ClosingDays,setClosingDays]=useState([])
   const [facilities, setFacilities] = useState("");
   const { token, userId, gymOwner } = useContext(AppContext);
   const [AddMassege, setAddMassege] = useState("");
@@ -156,13 +162,20 @@ const [days,setDays]=useState([{day:"SU",status:status,buttonClass:buttonClass},
     return prevDays.map((day) => {
       if (day.day === dayName&&day.buttonClass=="inActive") {
 
-        return {day:dayName,status:!day.status,buttonClass:"active"}
+
+        return {day:dayName,status:!day.status,buttonClass:"active" }
       }else if (day.day === dayName&&day.buttonClass=="active") {
+      
         return {day:dayName,status:!day.status,buttonClass:"inActive"}
       }
       return day;
+ 
+
     });
+
   });
+
+
 };
 
   return <div class="weekDays-selector"> <button  onClick={
@@ -185,7 +198,7 @@ const [days,setDays]=useState([{day:"SU",status:status,buttonClass:buttonClass},
         type="text"
         name="facilities"
         placeholder="Gym Facilities"
-        onChange={(e) => {
+        onChange={ (e) => {
           setFacilities(e.target.value);
         }}
         required
@@ -193,17 +206,21 @@ const [days,setDays]=useState([{day:"SU",status:status,buttonClass:buttonClass},
       <button
         className="add-button"
         onClick={() => {
-          // let arr=  days.filter((ele)=>{
-          //   return ele.status==true
-          //           })
-          //           console.log(arr);
-          //           setClosingDays(arr)
+          let arr=  days.filter((ele)=>{
+            return ele.status==true
+                    })
+                    const closingDays = arr;
+
+         //  setClosingDays(arr) 
+       
+    
            handleSubmit()
            setMembershipPrice({oneMonth:oneMonth,threeMonth:threeMonth,oneYear:oneYear})
-           console.log(oneMonth);
-           console.log(threeMonth);
-           console.log(oneYear);
-           console.log(mempershipPrice);
+           
+                  //  console.log(arr);
+                  //  setClosingDays()
+                    //console.log(ClosingDays);
+         
           const newGym = {
             gymOwner: userId,
             name,
@@ -212,7 +229,7 @@ const [days,setDays]=useState([{day:"SU",status:status,buttonClass:buttonClass},
             mempershipPrice,
             facilities,
             numberOfMember,
-            ClosingDays
+            ClosingDays:closingDays
 
           };
          
@@ -222,6 +239,7 @@ const [days,setDays]=useState([{day:"SU",status:status,buttonClass:buttonClass},
             },
           }).then((res) => {
             console.log(res.data);
+           
             setAddMassege(res.data.message)
             console.log(res);
           }).catch((err) => {
@@ -235,13 +253,8 @@ const [days,setDays]=useState([{day:"SU",status:status,buttonClass:buttonClass},
      
       <p className="xx">{AddMassege}</p>
       <button onClick={()=>{
-        let arr=  days.filter((ele)=>{
-            return ele.status==true
-                    })
-                    console.log(arr);
-                    setClosingDays(arr)
-                   
-                    console.log(mempershipPrice);
+      
+                  
       }} >test</button>
     </div>
   );
@@ -252,5 +265,5 @@ export default AddGym;
 
 
   
- 
- 
+
+
