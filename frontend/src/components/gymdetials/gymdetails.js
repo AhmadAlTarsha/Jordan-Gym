@@ -40,7 +40,10 @@ const Gymdetails = () => {
     <div className="gym-details-container"><div className="gym-info" ><p>Name : {currentGym?.name}</p><p>Location : {currentGym.location}</p><div className="memberShip_div"><h3>MempershipPrice : </h3><p>{currentGym?.mempershipPrice?.oneMonth
     } / Month</p><p>{currentGym?.mempershipPrice?.threeMonth
     } /Three Month</p><p>{currentGym?.mempershipPrice?.oneYear
-    } / Annually</p></div><p>facilities : {currentGym.facilities
+    } / Annually</p></div><div>{currentGym?.ClosingDays?.map((ele)=>{
+      return <li>{ele.day}</li>
+    })
+    }</div><p>facilities : {currentGym.facilities
     }
       </p><ul>Name Of Gym coach's : {currentGym?.nameOfTriner?.map(oneCoach => {
        return <li>{oneCoach}</li>
