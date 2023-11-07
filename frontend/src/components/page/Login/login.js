@@ -1,28 +1,32 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Routes, Route, Link, useParams, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./login.css";
 import axios from "axios";
-import { AppContext } from "../../App";
+import { AppContext } from "../../../App";
 const Login = () => {
   const {
-setLoggedIn,loginMessage,setLoginMessage,setIsLoggedIn, setUserId,setGymOwner,setUserRole,setToken,Name, setName
+    setLoggedIn, loginMessage, setLoginMessage, setUserId, setGymOwner, setUserRole, setToken, setName
   } = useContext(AppContext);
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  
+  const [login, setLogin] = useState({});
+  const handelChange = (e) => {
+    setLogin({
+      ...login,
+      [e.target.name]: e.target.value,
+    });
+  }
 
-  const handleLogin = () => {
-    const user = { email, password };
+  const handleLogin = async (e) => {
 
-    axios
-      .post("http://localhost:5000/users/login", user)
+
+    await axios
+      .post("http://localhost:5000/users/login", login)
       .then((res) => {
         if (res.data.success) {
           const token = res.data.token;
           const role = res.data.role.role;
           const user_id = res.data.userId;
-          const name=res.data.name
+          const name = res.data.name
 
           localStorage.setItem("token", token);
           localStorage.setItem("userId", user_id);
@@ -32,22 +36,23 @@ setLoggedIn,loginMessage,setLoginMessage,setIsLoggedIn, setUserId,setGymOwner,se
           setGymOwner(user_id);
           setUserRole(role);
           setLoggedIn(true);
-          console.log(role);
-          setToken(token);
-          console.log(user_id);
-          setUserId(user_id);
-          console.log(res.data);
-          setLoginMessage(res.data.message)
 
-       
+          setToken(token);
+
+          setUserId(user_id);
+
+          setLoginMessage(res?.data?.message)
+
+
           navigate("/gympost")
         }
       })
       .catch((error) => {
-        console.log(error);
-        setLoginMessage(error?.response?.data?.message);
+
+        { loginMessage == undefined ? setLoginMessage("please Fill the input") : setLoginMessage(error?.response?.data?.message); }
+
       });
-     
+
   };
 
   return (
@@ -56,16 +61,18 @@ setLoggedIn,loginMessage,setLoginMessage,setIsLoggedIn, setUserId,setGymOwner,se
       <input
         type="text"
         placeholder="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        name="email"
+
+        onChange={(e) => handelChange(e)}
       />
       <input
         type="password"
         placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        name="password"
+
+        onChange={(e) => handelChange(e)}
       />
-      <button onClick={handleLogin}>Login</button>
+      <button onClick={(e) => handleLogin(e)}>Login</button>
       <p className="loginMessage">
         Not a Member? <Link className="register_link" to="/register">Register now</Link>
       </p>

@@ -34,6 +34,7 @@
     padding: 5px 10px;
     border-radius: 3px;
     cursor: pointer;
+  
   }
   .mygym-container a {
     color: #007bff;
@@ -52,5 +53,49 @@
   .b{
     font-weight: bold;
     color: #f39c12;
+  }
+  .update_coach{
+    display: flex;
+   gap: 5px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .update_coach p{
+    margin-bottom: 10px;
+  }
+  .addTrainer{
+    display: flex;
+    width: 100%;
+    gap: 5px;
+    margin-bottom: 10px;
+    
+    justify-content: center;align-items: center;
+    width: 30;
+  }
+  .addTrainer input{
+    margin-bottom: 0px;
+  }
+  #disable{
+cursor: not-allowed;
+color: red;
+background: red;
+color: #efedea;
+border: none;
+padding: 5px 10px;
+border-radius: 3px;
+
+
+
+
+  }
+  #enable{
+    background: #f39c12;
+    color: #efedea;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+  
   }
 /*  */

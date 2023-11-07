@@ -1,7 +1,7 @@
 import React from 'react'
 import "./homescreen.css"
 import { Routes, Route, Link, useParams, useNavigate } from "react-router-dom";
-const logo = require("../../image/logo.jpg")
+const logo = require("../../../image/logo.jpg")
 const Homescreen = () => {
     const navigate=useNavigate()
 const goToHomePage=()=>{

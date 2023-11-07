@@ -1,5 +1,5 @@
-import React, { useState,createContext  } from "react";
-import { Routes, Route,  } from "react-router-dom";
+import React, { useState  } from "react";
+
 function DynamicInputFields() {
     const [numInputs, setNumInputs] = useState(1);
     const [inputValues, setInputValues] = useState(['']);
